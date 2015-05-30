@@ -1,0 +1,7 @@
+{
+    "parent": "exnihilo2:block/sieve",
+    "ambientocclusion": false,
+    "textures": {
+        "material": "blocks/iron_block"
+    }
+}
