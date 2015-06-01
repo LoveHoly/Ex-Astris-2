@@ -5,6 +5,7 @@ import kr.loveholy.exastris.ExAstrisBlock;
 import kr.loveholy.exastris.ExAstrisData;
 import kr.loveholy.exastris.ExAstrisItem;
 import kr.loveholy.exastris.block.tileentity.TileEntityAutomaticSieve;
+import kr.loveholy.exastris.compatibility.nei.ModNEI;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.client.resources.model.ModelBakery;
@@ -25,5 +26,11 @@ public class ClientProxy extends CommonProxy {
 
 		ClientRegistry.bindTileEntitySpecialRenderer(
 				TileEntityAutomaticSieve.class, new SieveRenderer());
+	}
+	
+	@Override
+	public void initNEI()
+	{
+		ModNEI.init();
 	}
 }

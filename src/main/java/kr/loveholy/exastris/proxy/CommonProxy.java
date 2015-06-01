@@ -5,4 +5,9 @@ public class CommonProxy {
 	{
 		
 	}
+	
+	public void initNEI()
+	{
+		
+	}
 }
