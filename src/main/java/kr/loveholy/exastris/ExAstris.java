@@ -1,11 +1,8 @@
 package kr.loveholy.exastris;
 
-import java.io.File;
-
 import kr.loveholy.exastris.gui.GuiHandler;
 import kr.loveholy.exastris.proxy.CommonProxy;
 import kr.loveholy.exastris.registry.RegistryRecipe;
-import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
