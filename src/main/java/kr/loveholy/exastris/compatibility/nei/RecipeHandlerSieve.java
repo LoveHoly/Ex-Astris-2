@@ -24,6 +24,7 @@ import codechicken.nei.recipe.TemplateRecipeHandler;
 import exnihilo2.registries.sifting.SieveRegistry;
 import exnihilo2.registries.sifting.SieveRegistryEntry;
 import exnihilo2.registries.sifting.SieveReward;
+import exnihilo2.util.enums.EnumMetadataBehavior;
 
 public class RecipeHandlerSieve extends TemplateRecipeHandler {
 
@@ -142,7 +143,7 @@ public class RecipeHandlerSieve extends TemplateRecipeHandler {
 				ItemStack inputStack = new ItemStack(ii.getValue().getInput().getBlock());
 				ArrayList<ItemStack> resultStack = new ArrayList<ItemStack>();
 				HashMap<ItemInfo, Integer> cache = new HashMap<ItemInfo, Integer>();
-				for (SieveReward s : SieveRegistry.getEntryForBlockState(ii.getValue().getInput()).getRewards()) {
+				for (SieveReward s : SieveRegistry.getEntryForBlockState(ii.getValue().getInput(), EnumMetadataBehavior.SPECIFIC).getRewards()) {
 					ItemInfo currInfo = new ItemInfo(s.getItem());
 					if (cache.containsKey(currInfo))
 						cache.put(currInfo, cache.get(currInfo)+1);
@@ -183,7 +184,7 @@ public class RecipeHandlerSieve extends TemplateRecipeHandler {
 			if (!completed.contains(ii))
 			{
 				HashMap<ItemInfo, Integer> stored = new HashMap<ItemInfo, Integer>();
-				for (SieveReward results : SieveRegistry.getEntryForBlockState(ii.getInput().getBlock().getBlockState().getBaseState()).getRewards())
+				for (SieveReward results : SieveRegistry.getEntryForBlockState(ii.getInput().getBlock().getBlockState().getBaseState(), EnumMetadataBehavior.SPECIFIC).getRewards())
 				{
 					ItemInfo current = new ItemInfo(results.getItem());
 					if (stored.containsKey(current))
@@ -217,7 +218,7 @@ public class RecipeHandlerSieve extends TemplateRecipeHandler {
 			return;
 		}
 
-		for (SieveReward results : SieveRegistry.getEntryForBlockState(Block.getBlockFromItem(ingredient.getItem()).getBlockState().getBaseState()).getRewards()) {
+		for (SieveReward results : SieveRegistry.getEntryForBlockState(Block.getBlockFromItem(ingredient.getItem()).getBlockState().getBaseState(), EnumMetadataBehavior.SPECIFIC).getRewards()) {
 			ItemInfo current = new ItemInfo(results.getItem());
 			
 			if (stored.containsKey(current))
@@ -255,7 +256,7 @@ public class RecipeHandlerSieve extends TemplateRecipeHandler {
 			ItemStack sourceStack = crecipe.input.get(0).item;
 			Block inBlock = Block.getBlockFromItem(sourceStack.getItem());
 			int meta = sourceStack.getItemDamage();
-			for (SieveReward smash : SieveRegistry.getEntryForBlockState(inBlock.getBlockState().getBaseState()).getRewards()) {
+			for (SieveReward smash : SieveRegistry.getEntryForBlockState(inBlock.getBlockState().getBaseState(), EnumMetadataBehavior.SPECIFIC).getRewards()) {
 				if (NEIServerUtils.areStacksSameTypeCrafting(itemStack,
 						new ItemStack(smash.getItem().getItem(), 1, smash.getItem().getItemDamage()))) {
 					int chance = (int) smash.getBaseChance();

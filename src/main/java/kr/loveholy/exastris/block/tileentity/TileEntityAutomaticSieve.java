@@ -21,6 +21,7 @@ import net.minecraft.util.IChatComponent;
 import exnihilo2.blocks.sieves.tileentity.TileEntitySieve;
 import exnihilo2.registries.sifting.SieveRegistry;
 import exnihilo2.registries.sifting.SieveReward;
+import exnihilo2.util.enums.EnumMetadataBehavior;
 
 public class TileEntityAutomaticSieve extends TileEntitySieve implements ISidedInventory{
 
@@ -378,7 +379,7 @@ public class TileEntityAutomaticSieve extends TileEntitySieve implements ISidedI
 			{
 				if (contentsState != null)
 				{
-					ArrayList<SieveReward> rewards = SieveRegistry.getEntryForBlockState(contentsState).getRewards();
+					ArrayList<SieveReward> rewards = SieveRegistry.getEntryForBlockState(contentsState, EnumMetadataBehavior.SPECIFIC).getRewards();
 					if(rewards != null && rewards.size() > 0)
 					{
 						Iterator<SieveReward> it = rewards.iterator();
